@@ -1,0 +1,19 @@
+<header class="header">
+  <!-- <div> -->
+  <a class="navLeading" [routerLink]="routesEnum.Home">
+    <mat-icon class="navIcon">timer</mat-icon>
+    <h1 class="navAppName">TimeTracker</h1>
+  </a>
+  <!-- </div> -->
+  <ul class="navBar">
+    <li class="navLink" [routerLink]="routesEnum.Hours"><a class="linkText">{{ routesEnum.Hours | uppercase }}</a>
+      <mat-icon class="expandIcon">expand_more</mat-icon>
+    </li>
+    <li class="navLink" [routerLink]="routesEnum.Projects"><a class="linkText">{{ routesEnum.Projects | uppercase }}</a></li>
+    <li class="navLink" [routerLink]="routesEnum.Charts"><a class="linkText">{{ routesEnum.Charts | uppercase }}</a>
+    </li>
+    <!-- <li class="navLink" [routerLink]="routesEnum.Staff"><a class="linkText">{{ routesEnum.Staff | uppercase }}</a></li> -->
+    <!-- <li class="navLink" [routerLink]="routesEnum.Tables"><a class="linkText">{{ routesEnum.Tables | uppercase }}</a></li> -->
+    
+  </ul>
+</header>
