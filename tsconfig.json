@@ -29,6 +29,7 @@
       "@guards/*": ["./src/app/guards/*"],
       "@services/*": ["./src/app/services/*"],
       "@shared/*": ["./src/app/shared/*"],
+      "@charts/*": ["./src/app/shared/components/charts/*"],
       "@views/*": ["./src/app/views/*"],
     }
   },

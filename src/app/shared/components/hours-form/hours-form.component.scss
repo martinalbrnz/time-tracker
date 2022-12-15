@@ -1,0 +1,16 @@
+.formContainer {
+	padding: 12px;
+	margin: 12px;
+	width: 300px;
+	background-color: #F1F6F5;
+	border-radius: 2px;
+	
+	form {
+		display: flex;
+		flex-direction: column;
+	}
+
+	button {
+		width: 100%;
+	}
+}

@@ -1,34 +1,34 @@
-<div>
+<div class="formContainer">
   <form [formGroup]="form">
 
     <mat-form-field appearance="outline">
       <mat-label>Seleccione una fecha</mat-label>
-      <input matInput formControlName="date" [matDatepicker]="picker">
-      <mat-hint>MM/DD/YYYY</mat-hint>
+      <input matInput formControlName="date" [matDatepicker]="picker" readonly>
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-
+    
     <mat-form-field appearance="outline">
       <mat-label>Seleccione un proyecto</mat-label>
       <mat-select formControlName="project">
         <mat-option *ngFor="let project of projects" [value]="project.id">{{ project.title }}</mat-option>
       </mat-select>
+      <mat-error>Este campo es obligatorio</mat-error>
     </mat-form-field>
-
+    
     <mat-form-field appearance="outline">
       <mat-label>Seleccione hora inicial</mat-label>
       <input matInput type="time" formControlName="initHour">
+      <mat-error>Este campo es obligatorio</mat-error>
     </mat-form-field>
-
+    
     <mat-form-field appearance="outline">
       <mat-label>Seleccione hora final</mat-label>
       <input matInput type="time" formControlName="endHour">
+      <mat-error>Este campo es obligatorio</mat-error>
     </mat-form-field>
 
   </form>
-  <button mat-flat-button color="primary" class="button" [disabled]="!form.valid"
+  <button mat-flat-button color="primary" [disabled]="!form.valid"
     (click)="handleSubmit()">Guardar</button>
-
-  <p>{{ form.value | json }}</p>
 </div>

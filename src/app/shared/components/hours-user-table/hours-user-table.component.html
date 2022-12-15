@@ -1,0 +1,29 @@
+<table>
+	<thead>
+		<tr>
+			<th>Fecha</th>
+			<th>Proyecto</th>
+			<th>Hora inicio</th>
+			<th>Hora final</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let reg of hours">
+			<td>{{ reg.initHour | date: 'dd/MM/yyyy' }}</td>
+			<td>{{ reg.project.title }}</td>
+			<td>{{ reg.initHour | date: 'HH:mm' }}</td>
+			<td>{{ reg.endHour | date: 'HH:mm' }}</td>
+			<td><mat-icon class="navIcon" (click)="handleEdit(reg)">edit</mat-icon></td>
+		</tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td><mat-icon class="navIcon">keyboard_arrow_left</mat-icon></td>
+			<td></td>
+			<td>12/12/2022-12/12/2022</td>
+			<td></td>
+			<td><mat-icon class="navIcon">keyboard_arrow_right</mat-icon></td>
+		</tr>
+	</tfoot>
+</table>
