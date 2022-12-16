@@ -1,9 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, ViewChild } from '@angular/core';
-import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChartDataService } from '@services/chart-data.service';
+import { ChartConfiguration, ChartData, ChartType } from 'chart.js';
 import { BaseChartDirective, NgChartsModule } from 'ng2-charts';
 
+
 import DataLabelsPlugin from 'chartjs-plugin-datalabels';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-bar-chart',
@@ -15,8 +18,18 @@ import DataLabelsPlugin from 'chartjs-plugin-datalabels';
   templateUrl: './bar-chart.component.html',
   styleUrls: ['./bar-chart.component.scss']
 })
-export class BarChartComponent {
+export class BarChartComponent implements OnInit {
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
+
+  constructor(
+    private chartService: ChartDataService
+  ) { }
+
+  labels$?: Observable<string[]>
+  datasets$?: Observable<{ data: number[], label: string }[]>
+
+  labels: string[] = []
+  datasets: { data: number[], label: string }[] = []
 
   public barChartOptions: ChartConfiguration['options'] = {
     responsive: true,
@@ -41,20 +54,27 @@ export class BarChartComponent {
     DataLabelsPlugin
   ];
 
-  public barChartData: ChartData<'bar'> = {
-    labels: ['2006', '2007', '2008', '2009', '2010', '2011', '2012'],
-    datasets: [
-      { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
-      { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' }
-    ]
-  };
+  public barChartData?: ChartData<'bar'>;
 
-  // events
-  public chartClicked({ event, active }: { event?: ChartEvent, active?: {}[] }): void {
-    console.log(event, active);
-  }
+  ngOnInit() {
+    this.labels$ = this.chartService.labels
+    this.datasets$ = this.chartService.datasets
 
-  public chartHovered({ event, active }: { event?: ChartEvent, active?: {}[] }): void {
-    console.log(event, active);
+    this.labels$.subscribe(labels => {
+      this.labels = labels
+      this.barChartData = {
+        labels,
+        datasets: this.datasets,
+
+      }
+    })
+
+    this.datasets$.subscribe(datasets => {
+      this.datasets = datasets
+      this.barChartData = {
+        datasets,
+        labels: this.labels
+      }
+    })
   }
 }

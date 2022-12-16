@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, ViewChild } from '@angular/core';
-import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
-import { BaseChartDirective, NgChartsModule } from 'ng2-charts';
-
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChartDataService } from '@services/chart-data.service';
+import { ChartConfiguration, ChartData, ChartType } from 'chart.js';
 import DatalabelsPlugin from 'chartjs-plugin-datalabels';
+import { BaseChartDirective, NgChartsModule } from 'ng2-charts';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-pie-chart',
@@ -15,8 +16,18 @@ import DatalabelsPlugin from 'chartjs-plugin-datalabels';
   templateUrl: './pie-chart.component.html',
   styleUrls: ['./pie-chart.component.scss']
 })
-export class PieChartComponent {
+export class PieChartComponent implements OnInit {
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
+
+  constructor(
+    private chartService: ChartDataService,
+  ) { }
+
+  labels$?: Observable<string[]>
+  datasets$?: Observable<{ data: number[], label: string }[]>
+
+  labels: string[] = []
+  datasets: { data: number[], label: string }[] = []
 
   // Pie
   public pieChartOptions: ChartConfiguration['options'] = {
@@ -35,54 +46,30 @@ export class PieChartComponent {
       },
     }
   };
-  public pieChartData: ChartData<'pie', number[], string | string[]> = {
-    labels: [ [ 'Download', 'Sales' ], [ 'In', 'Store', 'Sales' ], 'Mail Sales' ],
-    datasets: [ {
-      data: [ 300, 500, 100 ]
-    } ]
-  };
+  public pieChartData?: ChartData<'pie', number[], string | string[]>
   public pieChartType: ChartType = 'pie';
-  public pieChartPlugins = [ DatalabelsPlugin ];
+  public pieChartPlugins = [DatalabelsPlugin];
 
-  // events
-  public chartClicked({ event, active }: { event: ChartEvent, active: {}[] }): void {
-    console.log(event, active);
-  }
+  ngOnInit() {
+    this.labels$ = this.chartService.labels
+    this.datasets$ = this.chartService.datasets
 
-  public chartHovered({ event, active }: { event: ChartEvent, active: {}[] }): void {
-    console.log(event, active);
-  }
+    this.labels$.subscribe(labels => {
+      this.labels = labels
+      this.pieChartData = {
+        labels,
+        datasets: this.datasets,
 
-  changeLabels(): void {
-    const words = [ 'hen', 'variable', 'embryo', 'instal', 'pleasant', 'physical', 'bomber', 'army', 'add', 'film',
-      'conductor', 'comfortable', 'flourish', 'establish', 'circumstance', 'chimney', 'crack', 'hall', 'energy',
-      'treat', 'window', 'shareholder', 'division', 'disk', 'temptation', 'chord', 'left', 'hospital', 'beef',
-      'patrol', 'satisfied', 'academy', 'acceptance', 'ivory', 'aquarium', 'building', 'store', 'replace', 'language',
-      'redeem', 'honest', 'intention', 'silk', 'opera', 'sleep', 'innocent', 'ignore', 'suite', 'applaud', 'funny' ];
-    const randomWord = () => words[Math.trunc(Math.random() * words.length)];
-    this.pieChartData.labels = new Array(3).map(_ => randomWord());
+      }
+    })
 
-    this.chart?.update();
-  }
-
-  addSlice(): void {
-    if (this.pieChartData.labels) {
-      this.pieChartData.labels.push([ 'Line 1', 'Line 2', 'Line 3' ]);
-    }
-
-    this.pieChartData.datasets[0].data.push(400);
-
-    this.chart?.update();
-  }
-
-  removeSlice(): void {
-    if (this.pieChartData.labels) {
-      this.pieChartData.labels.pop();
-    }
-
-    this.pieChartData.datasets[0].data.pop();
-
-    this.chart?.update();
+    this.datasets$.subscribe(datasets => {
+      this.datasets = datasets
+      this.pieChartData = {
+        datasets,
+        labels: this.labels
+      }
+    })
   }
 
   changeLegendPosition(): void {
