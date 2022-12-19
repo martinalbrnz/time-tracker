@@ -1,9 +1,11 @@
-import { CommonModule } from '@angular/common'
-import { Component } from '@angular/core'
-import { MatIconModule } from '@angular/material/icon'
-import { RouterModule } from '@angular/router'
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
+import { RouterModule } from '@angular/router';
 
-import { RoutesEnum } from '@constants/routes'
+
+import { RoutesEnum } from '@constants/routes';
+import { AuthGuard } from '@guards/auth.guard';
 
 @Component({
   standalone: true,
@@ -13,5 +15,10 @@ import { RoutesEnum } from '@constants/routes'
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+  constructor(
+    private authService: AuthGuard
+  ) { }
+
+  showHeader = this.authService.canActivate()
   routesEnum = RoutesEnum
 }

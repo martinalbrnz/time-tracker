@@ -43,7 +43,7 @@ export const projectMock: Project[] = [
 	{
 		id: 2,
 		title: 'App #2',
-		description: 'The second app'
+		description: 'The second app',
 	},
 	{
 		id: 3,

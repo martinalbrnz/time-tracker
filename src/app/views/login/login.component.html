@@ -1,1 +1,16 @@
-<p>login works!</p>
+<div class="login-container">
+
+	<mat-form-field appearance="outline" class="login-input">
+		<mat-label>Email</mat-label>
+		<input matInput type="text" [(ngModel)]="email">
+	</mat-form-field>
+
+	<mat-form-field appearance="outline" class="login-input">
+		<mat-label>Contraseña</mat-label>
+		<input matInput [type]="showPassword ? 'text' : 'password'" [(ngModel)]="password">
+		<mat-icon matSuffix mat-icon-button aria-label="Mostrar contraseña" (click)="toggleShow()">{{ showPassword ?
+			'visibility_off' : 'visibility'}}</mat-icon>
+
+	</mat-form-field>
+
+</div>
