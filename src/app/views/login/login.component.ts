@@ -1,29 +1,30 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { HttpService } from '@services/http/http.service';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { RoutesEnum } from '@constants/routes';
+import { LoginService } from '@services/login/login.service';
 
-interface LoginResponse {
-  access_token: string
-}
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [
     CommonModule,
-    MatInputModule,
     FormsModule,
-    MatIconModule,
-    ReactiveFormsModule,
     MatButtonModule,
+    MatIconModule,
+    MatInputModule,
+    MatSnackBarModule,
     HttpClientModule,
   ],
   providers: [
-    HttpService
+    LoginService,
+    HttpClient,
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
@@ -31,17 +32,14 @@ interface LoginResponse {
 export class LoginComponent implements OnInit {
 
   constructor(
-    private http: HttpService,
-    private fb: FormBuilder
+    private login: LoginService,
+    private _snackbar: MatSnackBar,
+    private router: Router,
   ) { }
 
-  form = this.fb.group({
-    email: [null, [Validators.required]],
-    password: [null]
-  })
-
+  email?: string
+  password?: string
   showPassword = false
-  response?: string
 
   ngOnInit() {
   }
@@ -51,10 +49,18 @@ export class LoginComponent implements OnInit {
   }
 
   handleLogin() {
-    const { email, password } = this.form.value
-    this.http.login(email!, password!).subscribe(res => {
-      localStorage.setItem('token', res.access_token)
-    })
-
+    this.login.login({ email: this.email, password: this.password })
+      .subscribe(res => {
+        if (res.error) {
+          this._snackbar.open('La contraseña o el email son incorrectos', 'Ok', {
+            verticalPosition: 'top',
+            horizontalPosition: 'right'
+          })
+        } else { // No error
+          this.login.setRole(res.role);
+          this.login.setToken(res.access_token)
+          this.router.navigate([RoutesEnum.Home])
+        }
+      })
   }
 }

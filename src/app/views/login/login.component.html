@@ -1,16 +1,17 @@
-<div>
-	<form [formGroup]="form">
+<div class="form-container">
+	<div class="form">
+		<h1 class="title">Ingresar</h1>
 		<mat-form-field appearance="outline" class="login-input">
 			<mat-label>Email</mat-label>
-			<input matInput type="text" formControlName="email">
+			<input matInput type="text" [(ngModel)]="email">
 		</mat-form-field>
 
 		<mat-form-field appearance="outline" class="login-input">
 			<mat-label>Contraseña</mat-label>
-			<input matInput [type]="showPassword ? 'text' : 'password'" formControlName="password">
+			<input matInput [type]="showPassword ? 'text' : 'password'" [(ngModel)]="password">
 			<mat-icon matSuffix mat-icon-button aria-label="Mostrar contraseña" (click)="toggleShow()">{{ showPassword ?
 				'visibility_off' : 'visibility'}}</mat-icon>
 		</mat-form-field>
-	</form>
-	<button mat-flat-button color="primary" (click)="handleLogin()">Login</button>
+		<button mat-flat-button color="primary" (click)="handleLogin()">Login</button>
+	</div>
 </div>

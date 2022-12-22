@@ -1,11 +1,11 @@
-<header class="header" *ngIf="showHeader">
+<header class="header">
   <!-- <div> -->
   <a class="navLeading" [routerLink]="routesEnum.Home">
     <mat-icon class="navIcon">timer</mat-icon>
     <h1 class="navAppName">TimeTracker</h1>
   </a>
   <!-- </div> -->
-  <ul class="navBar">
+  <ul class="navBar" *ngIf="isLogged | async">
     <li class="navLink" [routerLink]="routesEnum.Hours"><a class="linkText">{{ routesEnum.Hours | uppercase }}</a>
       <mat-icon class="expandIcon">expand_more</mat-icon>
     </li>
