@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -29,7 +29,7 @@ import { LoginService } from '@services/login/login.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   constructor(
     private login: LoginService,
@@ -40,9 +40,6 @@ export class LoginComponent implements OnInit {
   email?: string
   password?: string
   showPassword = false
-
-  ngOnInit() {
-  }
 
   toggleShow() {
     this.showPassword = !this.showPassword

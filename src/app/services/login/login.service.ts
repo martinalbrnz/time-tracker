@@ -24,14 +24,16 @@ export class LoginService {
       );
   }
 
-  setRole(role: Role) {
-    console.log('Setting role...');
+  logout() {
+    localStorage.clear()
+  }
+
+  setRole(role: Role): void {
     localStorage.setItem('role', role)
     this.userRole.next(role);
   }
 
   setToken(token: string) {
-    console.log('Setting token...');
     localStorage.setItem('token', token)
     this.userToken.next(token);
   }

@@ -36,7 +36,6 @@ export class HeaderComponent implements OnInit {
   routesEnum = RoutesEnum
 
   ngOnInit() {
-    this.isLogged = this.loged.getToken;
-    this.loged.getToken.subscribe(val => console.log('tokeeeeeeen', val));
+    this.isLogged = this.loged.getRole;
   }
 }
