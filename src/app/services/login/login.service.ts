@@ -13,19 +13,27 @@ export class LoginService {
     private http: HttpClient,
   ) { }
 
-  private userRole: BehaviorSubject<Role> = new BehaviorSubject(localStorage.getItem('role') as Role || Role.User)
+  private userRole: BehaviorSubject<Role> = new BehaviorSubject(localStorage.getItem('role') as Role || Role.Guest)
   private userToken: BehaviorSubject<string | null> = new BehaviorSubject(localStorage.getItem('token'))
 
   login(user: { email?: string, password?: string }) {
     return this.http.post(`${environment.NG_API}/auth/login`, user)
+      .pipe()
       .pipe(
         map((res: any) => res),
         catchError(err => of(err)),
+      )
+      .pipe(
+        map(res => {
+          this.setRole(res.role as Role)
+          return res
+        })
       );
   }
 
   logout() {
     localStorage.clear()
+    this.setRole(Role.Guest)
   }
 
   setRole(role: Role): void {
