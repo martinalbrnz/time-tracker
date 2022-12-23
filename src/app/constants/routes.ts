@@ -3,5 +3,9 @@ export enum RoutesEnum {
 	Login = 'login',
 	Charts = 'charts',
 	Hours = 'hours',
-	Projects = 'projects'
+	Projects = 'projects',
+
+	/* Api routes */
+	HoursAPI = 'register',
+	ProjectAPI = 'project',
 }

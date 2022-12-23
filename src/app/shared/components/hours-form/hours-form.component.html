@@ -2,26 +2,33 @@
   <form [formGroup]="form">
 
     <mat-form-field appearance="outline">
-      <mat-label>Seleccione una fecha</mat-label>
-      <input matInput formControlName="date" [matDatepicker]="picker" readonly>
-      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-    
-    <mat-form-field appearance="outline">
       <mat-label>Seleccione un proyecto</mat-label>
       <mat-select formControlName="project">
-        <mat-option *ngFor="let project of projects" [value]="project.id">{{ project.title }}</mat-option>
+        <mat-option *ngFor="let project of projects$ | async" [value]="project._id">{{ project.title }}</mat-option>
       </mat-select>
       <mat-error>Este campo es obligatorio</mat-error>
     </mat-form-field>
-    
+
+    <mat-form-field appearance="outline">
+      <mat-label>Seleccione una fecha</mat-label>
+      <input matInput formControlName="date_from" [matDatepicker]="picker_from" readonly>
+      <mat-datepicker-toggle matIconSuffix [for]="picker_from"></mat-datepicker-toggle>
+      <mat-datepicker #picker_from></mat-datepicker>
+    </mat-form-field>
+
     <mat-form-field appearance="outline">
       <mat-label>Seleccione hora inicial</mat-label>
       <input matInput type="time" formControlName="initHour">
       <mat-error>Este campo es obligatorio</mat-error>
     </mat-form-field>
-    
+
+    <!-- <mat-form-field appearance="outline">
+      <mat-label>Seleccione una fecha</mat-label>
+      <input matInput formControlName="date_to" [matDatepicker]="picker_to" readonly>
+      <mat-datepicker-toggle matIconSuffix [for]="picker_to"></mat-datepicker-toggle>
+      <mat-datepicker #picker_to></mat-datepicker>
+    </mat-form-field> -->
+
     <mat-form-field appearance="outline">
       <mat-label>Seleccione hora final</mat-label>
       <input matInput type="time" formControlName="endHour">
@@ -29,6 +36,5 @@
     </mat-form-field>
 
   </form>
-  <button mat-flat-button color="primary" [disabled]="!form.valid"
-    (click)="handleSubmit()">Guardar</button>
+  <button mat-flat-button color="primary" [disabled]="!form.valid" (click)="handleSubmit()">Guardar</button>
 </div>

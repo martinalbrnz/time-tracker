@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { environment } from '@environments/environment';
+import { catchError, map, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,13 +18,21 @@ export class HttpService {
     ]);
   }
 
-  login(email: string, password: string): Observable<any> {
+  create<T>(route: string, data: any) {
     return this.http
-      .post(
-        `http://localhost:3000/auth/login`,
-        { email, password })
+      .post(`${environment.NG_API}/${route}`, data)
       .pipe(
-        map((res: any) => res.body),
+        map((res: any) => res),
+        catchError(err => of(err))
       )
   }
-}
+
+  getAll<T>(route: string) {
+    return this.http
+      .get(`${environment.NG_API}/${route}`)
+      .pipe(
+        map((res: any) => res),
+        catchError(err => of(err))
+      )
+  }
+} 

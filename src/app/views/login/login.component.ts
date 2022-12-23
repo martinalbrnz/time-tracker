@@ -54,6 +54,7 @@ export class LoginComponent {
             horizontalPosition: 'right'
           })
         } else { // No error
+          localStorage.setItem('id', res.id)
           this.login.setRole(res.role);
           this.login.setToken(res.access_token)
           this.router.navigate([RoutesEnum.Home])
