@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ChartDataService {
   labels$ = new BehaviorSubject<string[]>([])
-  datasets$ = new BehaviorSubject<{data: number[], label: string}[]>([])
+  datasets$ = new BehaviorSubject<{ data: (number | null)[], label: string }[]>([])
 
   get labels() {
     return this.labels$.asObservable()
@@ -20,7 +20,7 @@ export class ChartDataService {
     this.labels$.next(labels)
   }
 
-  setDatasets(datasets: {data: number[], label: string}[]) {
+  setDatasets(datasets: { data: (number | null)[], label: string }[]) {
     this.datasets$.next(datasets)
   }
 

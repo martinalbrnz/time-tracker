@@ -24,10 +24,10 @@ export class PieChartComponent implements OnInit {
   ) { }
 
   labels$?: Observable<string[]>
-  datasets$?: Observable<{ data: number[], label: string }[]>
+  datasets$?: Observable<{ data: (number | null)[], label: string }[]>
 
   labels: string[] = []
-  datasets: { data: number[], label: string }[] = []
+  datasets: { data: (number | null)[], label: string }[] = []
 
   // Pie
   public pieChartOptions: ChartConfiguration['options'] = {
@@ -46,7 +46,7 @@ export class PieChartComponent implements OnInit {
       },
     }
   };
-  public pieChartData?: ChartData<'pie', number[], string | string[]>
+  public pieChartData?: ChartData<'pie', (number | null)[], string | string[]>
   public pieChartType: ChartType = 'pie';
   public pieChartPlugins = [DatalabelsPlugin];
 

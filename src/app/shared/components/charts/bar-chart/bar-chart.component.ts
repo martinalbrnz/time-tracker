@@ -26,22 +26,23 @@ export class BarChartComponent implements OnInit {
   ) { }
 
   labels$?: Observable<string[]>
-  datasets$?: Observable<{ data: number[], label: string }[]>
+  datasets$?: Observable<{ data: (number | null)[], label: string }[]>
 
   labels: string[] = []
-  datasets: { data: number[], label: string }[] = []
+  datasets: { data: (number | null)[], label: string }[] = []
 
   public barChartOptions: ChartConfiguration['options'] = {
     responsive: true,
     scales: {
       x: {},
       y: {
-        min: 10
+        max: 100
       }
     },
     plugins: {
       legend: {
         display: true,
+        position: 'right'
       },
       datalabels: {
         anchor: 'end',

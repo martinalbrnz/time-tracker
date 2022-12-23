@@ -26,10 +26,10 @@ export class LineChartComponent implements OnInit {
   }
 
   labels$?: Observable<string[]>
-  datasets$?: Observable<{ data: number[], label: string }[]>
+  datasets$?: Observable<{ data: (number | null)[], label: string }[]>
 
   labels: string[] = []
-  datasets: { data: number[], label: string }[] = []
+  datasets: { data: (number | null)[], label: string }[] = []
 
   public lineChartType: ChartType = 'line';
   public lineChartData?: ChartConfiguration['data']
