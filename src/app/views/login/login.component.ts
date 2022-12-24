@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -21,6 +21,7 @@ import { LoginService } from '@services/login/login.service';
     MatInputModule,
     MatSnackBarModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [
     LoginService,
@@ -32,21 +33,25 @@ import { LoginService } from '@services/login/login.service';
 export class LoginComponent {
 
   constructor(
+    private fb: FormBuilder,
     private login: LoginService,
     private _snackbar: MatSnackBar,
     private router: Router,
   ) { }
 
-  email?: string
-  password?: string
+  form = this.fb.group({
+    password: ['', [Validators.required]],
+    email: ['', [Validators.required]]
+  })
   showPassword = false
 
-  toggleShow() {
+  toggleShowPassword() {
     this.showPassword = !this.showPassword
   }
 
   handleLogin() {
-    this.login.login({ email: this.email, password: this.password })
+    const { password, email } = this.form.value
+    this.login.login({ email: email!, password: password! })
       .subscribe(res => {
         if (res.error) {
           this._snackbar.open('La contraseña o el email son incorrectos', 'Ok', {

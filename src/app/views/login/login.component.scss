@@ -1,19 +1,43 @@
-.form-container {
+@use "../../../scss/components" as c;
+
+.sectionContainer {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 80%;
+  height: 100%;
 
-  .form {
+  .formContainer {
     display: flex;
     flex-direction: column;
-    width: 300px;
-    padding: 20px;
-    background-color: #0092;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
 
-    .title {
-      align-self: center;
+    width: 400px;
+    padding: 20px;
+    background-color: var(--background-2);
+
+    .logo {
+      height: 256px;
+      width: 256px;
+    }
+
+    form {
+      width: 100%;
+
+      .inputContainer {
+        @include c.form-input;
+        width: 100%;
+      }
+    }
+
+    .actionButton {
+      @include c.form-button(#88e, #9999f9);
+      width: 100%;
     }
   }
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
 }
