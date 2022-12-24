@@ -1,16 +1,20 @@
 .formContainer {
-	padding: 12px;
-	margin: 12px;
-	width: 300px;
-	background-color: #F1F6F5;
-	border-radius: 2px;
-	
-	form {
-		display: flex;
-		flex-direction: column;
-	}
+  padding: 12px;
+  margin: 12px;
+  width: 300px;
+  background-color: #f1f6f5;
+  border-radius: 2px;
 
-	button {
-		width: 100%;
-	}
+  .formTitle {
+    color: var(--not-black);
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  button {
+    width: 100%;
+  }
 }

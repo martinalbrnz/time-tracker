@@ -1,4 +1,5 @@
 <div class="formContainer">
+  <h2 class="formTitle">Crear nuevo registro</h2>
   <form [formGroup]="form">
 
     <mat-form-field appearance="outline">
@@ -14,6 +15,7 @@
       <input matInput formControlName="date_from" [matDatepicker]="picker_from" readonly>
       <mat-datepicker-toggle matIconSuffix [for]="picker_from"></mat-datepicker-toggle>
       <mat-datepicker #picker_from></mat-datepicker>
+      <mat-error>Este campo es obligatorio</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline">

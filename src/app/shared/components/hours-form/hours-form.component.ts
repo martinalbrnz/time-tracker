@@ -89,7 +89,13 @@ export class HoursFormComponent implements OnInit {
 
     this.http.create(RoutesEnum.HoursAPI, newRegister).subscribe(res => {
       if (!res.error) {
-        this.form.reset({ project: null })
+        this.form.reset({
+          date_from: new Date(Date.now()),
+          // date_to: new Date(Date.now(),
+          project: null,
+          initHour: '09:00',
+          endHour: '17:00',
+        })
       }
     })
   }
