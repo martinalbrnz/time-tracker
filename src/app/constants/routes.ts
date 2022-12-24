@@ -9,4 +9,5 @@ export enum RoutesEnum {
 	/* Api routes */
 	HoursAPI = 'register',
 	ProjectAPI = 'project',
+	UserAPI = 'user',
 }

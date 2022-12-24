@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
-@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "../../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+@import "_components.scss";
 
 * {
   box-sizing: border-box;
@@ -36,10 +38,41 @@ body {
   --shadow-1: 0 1px 4px 2px #0002;
   --shadow-2: 0 1px 4px 3px #0002;
 
+  --default-border: 2px solid #a8a8a8;
+  --focus-border: 2px solid #3456a8;
+  --valid-border: 2px solid#34a856;
+  --invalid-border: 2px solid #d83456;
+
   --tile: #faedee;
   --tile-hover: #fefaee;
   --tile-text: #010f0a;
 
+  --disabled-background: #999;
+
   --header-height: 50px;
   --footer-height: 48px;
+}
+
+@mixin generic-button($background, $hover-background, $hover-shadow) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 120px;
+  color: white;
+  user-select: none;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 2px;
+  padding: 4px 8px;
+  background-color: $background;
+  transition: 0.2s;
+
+  &:hover {
+    background-color: $hover-background;
+    box-shadow: $hover-shadow;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
 }

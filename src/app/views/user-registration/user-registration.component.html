@@ -1,1 +1,38 @@
-<p>user-registration works!</p>
+<section class="sectionContainer">
+	<div class="formContainer">
+		<img class="logo" src="assets/icons/logo.svg" alt="Application icon">
+		<form [formGroup]="form">
+
+			<div class="inputContainer">
+				<label>Email</label>
+				<input type="text" formControlName="email" placeholder="Ingrese su email">
+				<p class="error" *ngIf="form.get('email')?.errors?.['required'] && form.get('email')?.touched">Este campo es
+					requerido</p>
+				<p class="error" *ngIf="form.get('email')?.errors?.['email']">El valor ingresado
+					debe ser un email</p>
+			</div>
+
+			<div class="inputContainer">
+				<label>Nombre</label>
+				<input type="text" formControlName="name" placeholder="Ingrese su nombre">
+				<p class="error" *ngIf="form.get('name')?.errors?.['required'] && form.get('name')?.touched">Este campo es
+					requerido</p>
+			</div>
+
+			<div class="inputContainer">
+				<label>Contraseña</label>
+				<input [type]="showPassword ? 'text' : 'password'" formControlName="password" placeholder="Contraseña">
+				<span (click)="toggleShowPassword()" class="material-symbols-outlined icon trailing" tabindex="-1">
+					{{ showPassword ? 'visibility' : 'visibility_off' }}
+				</span>
+				<p class="error" *ngIf="form.get('password')?.errors?.['required'] && form.get('password')?.touched">Este campo
+					es
+					requerido</p>
+				<p class="error" *ngIf="!!form.get('password')?.errors?.['minlength']">La contraseña debe tener al
+					menos 8 caracteres</p>
+			</div>
+		</form>
+		<button class="actionButton" [disabled]="form.invalid" (click)="handleRegistration()">{{ 'registrarse' | uppercase
+			}}</button>
+	</div>
+</section>
