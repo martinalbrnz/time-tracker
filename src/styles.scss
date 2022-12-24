@@ -1,6 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
 
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
 html,
 body {
   height: 100%;
@@ -22,11 +28,17 @@ body {
   --not-white: #edf2f7;
   --not-black: #06090f;
 
-  --shadow: 0 0 4px 4px #0003;
-  --shadow-2: 0 0 4px 8px #0003;
+  --background: #ffffff;
+  --background-1: #eeeeee;
+  --background-2: #dddddd;
 
-  --positive-tile: #dfd;
-  --negative-tile: #fdd;
+  --shadow: 0 0 4px 1px #0002;
+  --shadow-1: 0 1px 4px 2px #0002;
+  --shadow-2: 0 1px 4px 3px #0002;
+
+  --tile: #faedee;
+  --tile-hover: #fefaee;
+  --tile-text: #010f0a;
 
   --header-height: 50px;
   --footer-height: 48px;
