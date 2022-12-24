@@ -36,7 +36,7 @@ export class BarChartComponent implements OnInit {
     scales: {
       x: {},
       y: {
-        max: 100
+        max: 12
       }
     },
     plugins: {

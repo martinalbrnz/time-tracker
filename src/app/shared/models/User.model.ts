@@ -1,4 +1,4 @@
-import { Role } from "./Role.model"
+import { Role } from "@constants/roles"
 
 export interface User {
 	id: number
