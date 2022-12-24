@@ -1,0 +1,44 @@
+.landingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+
+  .landingLogo {
+  }
+
+  .landingTitle {
+    margin-bottom: 24px;
+  }
+
+  .actionsContainer {
+    display: flex;
+    gap: 8px;
+
+    .actionButton {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 120px;
+      color: white;
+      user-select: none;
+      font-weight: 500;
+      cursor: pointer;
+      border-radius: 2px;
+      padding: 4px 8px;
+      background-color: #88e;
+      transition: 0.2s;
+
+      &:hover {
+        background-color: #9999f9;
+        box-shadow: var(--shadow);
+      }
+
+      &:active {
+        transform: scale(0.98);
+      }
+    }
+  }
+}

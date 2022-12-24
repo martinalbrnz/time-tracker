@@ -13,6 +13,16 @@ const routes: Routes = [
     canActivate: [LoggedGuard],
   },
   {
+    path: RoutesEnum.Registration,
+    loadComponent: () => import('@views/user-registration/user-registration.component').then(m => m.UserRegistrationComponent),
+    canActivate: [LoggedGuard],
+  },
+  {
+    path: '',
+    loadComponent: () => import('@views/landing/landing.component').then(m => m.LandingComponent),
+    canActivate: [LoggedGuard],
+  },
+  {
     path: '',
     loadComponent: () => import('./container/layout-container/layout-container.component').then(m => m.LayoutContainerComponent),
     canActivate: [AuthGuard],
