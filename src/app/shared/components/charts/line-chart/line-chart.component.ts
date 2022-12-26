@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ChartDataService } from '@services/chart-data/chart-data.service';
+import { accumulateValues } from '@shared/functions/chartsAdapter';
 import { Chart, ChartConfiguration, ChartType } from 'chart.js';
 import { default as Annotation } from 'chartjs-plugin-annotation';
 import { BaseChartDirective, NgChartsModule } from 'ng2-charts';
@@ -57,16 +58,16 @@ export class LineChartComponent implements OnInit {
     this.labels$.subscribe(labels => {
       this.labels = labels
       this.lineChartData = {
-        labels,
+        labels: this.labels,
         datasets: this.datasets,
 
       }
     })
 
     this.datasets$.subscribe(datasets => {
-      this.datasets = datasets
+      this.datasets = accumulateValues(datasets)
       this.lineChartData = {
-        datasets,
+        datasets: this.datasets,
         labels: this.labels
       }
     })

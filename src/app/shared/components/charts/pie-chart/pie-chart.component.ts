@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ChartDataService } from '@services/chart-data/chart-data.service';
+import { formatHoursByProject } from '@shared/functions/chartsAdapter';
 import { ChartConfiguration, ChartData, ChartType } from 'chart.js';
 import DatalabelsPlugin from 'chartjs-plugin-datalabels';
 import { BaseChartDirective, NgChartsModule } from 'ng2-charts';
@@ -63,11 +64,7 @@ export class PieChartComponent implements OnInit {
     // })
 
     this.datasets$.subscribe(datasets => {
-      console.log(datasets);
-      this.datasets = [{
-        data: datasets
-          .map((hoursList) => hoursList.data.reduce((prev, curr) => prev! + curr!, 0)), label: ''
-      }]
+      this.datasets = formatHoursByProject(datasets)
       this.labels = datasets.map(proj => proj.label)
       this.pieChartData = {
         labels: this.labels,

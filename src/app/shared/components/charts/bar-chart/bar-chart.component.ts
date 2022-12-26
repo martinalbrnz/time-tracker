@@ -5,6 +5,7 @@ import { ChartConfiguration, ChartData, ChartType } from 'chart.js';
 import { BaseChartDirective, NgChartsModule } from 'ng2-charts';
 
 
+import { clearZeros } from '@shared/functions/chartsAdapter';
 import DataLabelsPlugin from 'chartjs-plugin-datalabels';
 import { Observable } from 'rxjs';
 
@@ -33,20 +34,31 @@ export class BarChartComponent implements OnInit {
 
   public barChartOptions: ChartConfiguration['options'] = {
     responsive: true,
+    parsing: {
+
+    },
     scales: {
-      x: {},
+      x: {
+        stacked: true,
+      },
       y: {
-        max: 12
-      }
+        max: 12,
+        stacked: true,
+      },
     },
     plugins: {
       legend: {
         display: true,
-        position: 'right'
+        position: 'right',
+        title: {
+          text: 'Proyecto',
+          position: 'center',
+          display: true,
+        },
       },
       datalabels: {
-        anchor: 'end',
-        align: 'end'
+        anchor: 'center',
+        align: 'center',
       }
     }
   };
@@ -64,16 +76,15 @@ export class BarChartComponent implements OnInit {
     this.labels$.subscribe(labels => {
       this.labels = labels
       this.barChartData = {
-        labels,
+        labels: this.labels,
         datasets: this.datasets,
-
       }
     })
 
     this.datasets$.subscribe(datasets => {
-      this.datasets = datasets
+      this.datasets = clearZeros(datasets)
       this.barChartData = {
-        datasets,
+        datasets: this.datasets,
         labels: this.labels
       }
     })

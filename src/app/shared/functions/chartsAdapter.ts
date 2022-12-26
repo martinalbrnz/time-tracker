@@ -33,3 +33,31 @@ export function registerToChartByProject(registers: Register[]) {
   })
   return { labels, datasets }
 }
+
+export function clearZeros(datasets: { data: (number | null)[], label: string }[]) {
+  return datasets.map((item) => {
+    return {
+      ...item,
+      data: item.data.map((reg) => reg! > 0 ? reg : null)
+    }
+  })
+}
+
+export function formatHoursByProject(datasets: { data: (number | null)[], label: string }[]) {
+  return [
+    {
+      data: datasets.map(dataset => dataset.data.reduce((prev, curr) => prev! + curr!, 0)),
+      label: ''
+    }
+  ]
+}
+
+export function accumulateValues(datasets: { data: (number | null)[], label: string }[]) {
+  return datasets.map(dataset => {
+    let acc = 0
+    return {
+      ...dataset,
+      data: dataset.data.map((dataItem) => acc += dataItem!)
+    }
+  })
+}
