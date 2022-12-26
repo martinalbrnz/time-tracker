@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RoutesEnum } from '@constants/routes';
-import { authRoutes } from 'src/authRoutes';
+import { authRoutes } from './authRoutes';
 
 import { AuthGuard } from '@guards/auth.guard';
 import { LoggedGuard } from '@guards/logged.guard';

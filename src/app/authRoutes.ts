@@ -23,4 +23,9 @@ export const authRoutes: Routes = [
     loadComponent: () => import('@views/hours/hours.component').then(m => m.HoursComponent),
     canActivate: [AuthGuard],
   },
+  {
+    path: '**',
+    redirectTo: RoutesEnum.Home,
+    pathMatch: 'full',
+  },
 ]
