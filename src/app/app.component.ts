@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     const { id } = localStorage
     this.http.getAll(`${RoutesEnum.HoursAPI}?user=${id}`).subscribe((res: any) => {
-      this.registersService.setRegisters(res)
+      this.registersService.setRegisters(res.data)
     })
   }
 }
