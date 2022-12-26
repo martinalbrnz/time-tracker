@@ -45,12 +45,15 @@ export class LoginComponent {
           if (res.error) {
             this._snackbar.open('La contraseña o el email son incorrectos', 'Ok', {
               verticalPosition: 'top',
-              horizontalPosition: 'right'
+              horizontalPosition: 'right',
+              duration: 3000,
             })
           } else { // No error
-            localStorage.setItem('id', res.id)
-            this.login.setRole(res.role);
-            this.login.setToken(res.access_token)
+            this._snackbar.open(`Bienvenido ${res.name}!`, 'Ok', {
+              verticalPosition: 'top',
+              horizontalPosition: 'right',
+              duration: 3000,
+            })
             this.router.navigate([RoutesEnum.Hours])
           }
         })

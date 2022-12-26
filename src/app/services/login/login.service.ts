@@ -25,7 +25,10 @@ export class LoginService {
       )
       .pipe(
         map(res => {
-          this.setRole(res.role as Role)
+          this.setRole(res.role as Role);
+          localStorage.setItem('id', res.id);
+          localStorage.setItem('name', res.name);
+          this.setToken(res.access_token);
           return res
         })
       );
