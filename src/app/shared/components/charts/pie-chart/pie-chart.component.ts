@@ -23,7 +23,7 @@ export class PieChartComponent implements OnInit {
     private chartService: ChartDataService,
   ) { }
 
-  labels$?: Observable<string[]>
+  // labels$?: Observable<string[]>
   datasets$?: Observable<{ data: (number | null)[], label: string }[]>
 
   labels: string[] = []
@@ -51,23 +51,27 @@ export class PieChartComponent implements OnInit {
   public pieChartPlugins = [DatalabelsPlugin];
 
   ngOnInit() {
-    this.labels$ = this.chartService.labels
+    // this.labels$ = this.chartService.labels
     this.datasets$ = this.chartService.datasets
 
-    this.labels$.subscribe(labels => {
-      this.labels = labels
-      this.pieChartData = {
-        labels,
-        datasets: this.datasets,
-
-      }
-    })
+    // this.labels$.subscribe(labels => {
+    //   this.labels = labels
+    //   this.pieChartData = {
+    //     labels: this.labels,
+    //     datasets: this.datasets,
+    //   }
+    // })
 
     this.datasets$.subscribe(datasets => {
-      this.datasets = datasets
+      console.log(datasets);
+      this.datasets = [{
+        data: datasets
+          .map((hoursList) => hoursList.data.reduce((prev, curr) => prev! + curr!, 0)), label: ''
+      }]
+      this.labels = datasets.map(proj => proj.label)
       this.pieChartData = {
-        datasets,
-        labels: this.labels
+        labels: this.labels,
+        datasets: this.datasets,
       }
     })
   }

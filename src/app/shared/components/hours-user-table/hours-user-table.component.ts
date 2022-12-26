@@ -31,7 +31,6 @@ export class HoursUserTableComponent implements OnInit {
     const { id } = localStorage
     this.http.getAll(`${RoutesEnum.HoursAPI}?user=${id}`).subscribe({
       next: (resp: any) => {
-        console.log(resp);
         this.registersService.setRegisters(resp.data)
       },
       error: () => {

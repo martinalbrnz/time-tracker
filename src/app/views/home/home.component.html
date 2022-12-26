@@ -1,1 +1,13 @@
-<p>home works!</p>
+<section class="sectionContainer">
+	<h2>Bienvenido {{ username | titlecase }}!</h2>
+
+	<div class="chart">
+		<div class="chartText">
+			<h3 class="cardTitle">Horas totales</h3>
+			<span>{{ hours$ | async }}</span>
+		</div>
+
+		<app-pie-chart></app-pie-chart>
+	</div>
+
+</section>

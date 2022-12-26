@@ -1,0 +1,35 @@
+.sectionContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+
+  .chart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    padding: 20px 40px;
+    border-radius: 4px;
+    background-color: var(--background-1);
+    min-width: 300px;
+    width: max-content;
+    max-width: 500px;
+
+    .chartText {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      span {
+        font-size: 42px;
+      }
+    }
+  }
+}
+
+.cardTitle {
+  font-weight: 600;
+}
