@@ -5,7 +5,7 @@ import { RoutesEnum } from '@constants/routes';
 import { HttpService } from '@services/http/http.service';
 import { RegistersService } from '@services/registers/registers.service';
 import { Register } from '@shared/models/Register.model';
-import { map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-hours-user-table',
@@ -27,14 +27,12 @@ export class HoursUserTableComponent implements OnInit {
 
   ngOnInit(): void {
     this.registers$ = this.registersService.registers
-      .pipe(
-        map(reg => reg.sort((prev, curr) => new Date(curr.init_date).getTime() - new Date(prev.init_date).getTime()))
-      )
 
     const { id } = localStorage
     this.http.getAll(`${RoutesEnum.HoursAPI}?user=${id}`).subscribe({
-      next: (resp: Register[]) => {
-        this.registersService.setRegisters(resp)
+      next: (resp: any) => {
+        console.log(resp);
+        this.registersService.setRegisters(resp.data)
       },
       error: () => {
         // implement a snackbar or something
