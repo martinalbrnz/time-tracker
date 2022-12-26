@@ -85,7 +85,6 @@ export class HoursFormComponent implements OnInit {
       hours,
       project,
     }
-    console.log(newRegister)
 
     this.http.create(RoutesEnum.HoursAPI, newRegister).subscribe(res => {
       if (!res.error) {

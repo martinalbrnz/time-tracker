@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ChartDataService } from '@services/chart-data.service';
+import { ChartDataService } from '@services/chart-data/chart-data.service';
 import { Chart, ChartConfiguration, ChartType } from 'chart.js';
 import { default as Annotation } from 'chartjs-plugin-annotation';
 import { BaseChartDirective, NgChartsModule } from 'ng2-charts';

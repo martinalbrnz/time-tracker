@@ -31,7 +31,5 @@ export function registerToChartByProject(registers: Register[]) {
       label: datasetLabel[i]
     }
   })
-  console.log(datasetLabel);
-  console.log('data: ', data);
   return { labels, datasets }
 }

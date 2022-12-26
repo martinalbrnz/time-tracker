@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ChartDataService } from '@services/chart-data.service';
+import { ChartDataService } from '@services/chart-data/chart-data.service';
 import { ChartConfiguration, ChartData, ChartType } from 'chart.js';
 import DatalabelsPlugin from 'chartjs-plugin-datalabels';
 import { BaseChartDirective, NgChartsModule } from 'ng2-charts';
