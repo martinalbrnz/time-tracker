@@ -15,6 +15,7 @@ export class ChartDataService {
     const { id } = localStorage;
     this.http
       .getAll(`${RoutesEnum.HoursAPI}?user=${id}`).subscribe((res: any) => {
+        const data = res.data.reverse()
         const { labels, datasets } = registerToChartByProject(res.data);
         this.setLabels(labels)
         this.setDatasets(datasets)
