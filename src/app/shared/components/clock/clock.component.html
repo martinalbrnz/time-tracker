@@ -1,0 +1,7 @@
+<div class="clockContainer">
+	<img src="assets/icons/clock_move.svg" class="movingClock">
+	<div class="seconds" [style.transform]="'rotateZ('+((seconds!*6) + 180)+'deg)'"></div>
+	<div class="minutes" [style.transform]="'rotateZ('+((seconds! / 10) + 180)+'deg)'"></div>
+	<div class="hours" [style.transform]="'rotateZ('+((minutes! / 2) + 180)+'deg)'"></div>
+	<div class="dot"></div>
+</div>

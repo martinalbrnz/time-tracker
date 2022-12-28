@@ -1,0 +1,60 @@
+.clockContainer {
+  position: relative;
+  width: 256px;
+  padding: 0;
+  margin: 0;
+
+  .movingClock {
+    height: 256px;
+    width: 256px;
+  }
+
+  .seconds,
+  .minutes,
+  .hours {
+    position: absolute;
+    transform-origin: top center;
+  }
+
+  .seconds {
+    top: 128px;
+    left: 126px;
+    width: 4px;
+    height: 86px;
+
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+    border-top: 86px solid rgb(146, 0, 0);
+  }
+
+  .minutes {
+    top: 128px;
+    left: 125px;
+    width: 6px;
+    height: 70px;
+    border-left: 2px solid transparent;
+    border-right: 2px solid transparent;
+    border-top: 70px solid black;
+  }
+
+  .hours {
+    top: 128px;
+    left: 124px;
+    width: 8px;
+    height: 60px;
+    border-left: 2px solid transparent;
+    border-right: 2px solid transparent;
+    border-top: 60px solid black;
+  }
+
+  .dot {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    top: 120px;
+    left: 120px;
+    z-index: 900;
+    background-color: black;
+  }
+}
