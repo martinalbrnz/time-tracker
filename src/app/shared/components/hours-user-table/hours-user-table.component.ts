@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
+import { ActivatedRoute } from '@angular/router';
 import { RoutesEnum } from '@constants/routes';
 import { HttpService } from '@services/http/http.service';
 import { RegistersService } from '@services/registers/registers.service';
@@ -20,6 +21,7 @@ import { Observable } from 'rxjs';
 export class HoursUserTableComponent implements OnInit {
   constructor(
     private http: HttpService,
+    private route: ActivatedRoute,
     private registersService: RegistersService,
   ) { }
 
@@ -28,14 +30,11 @@ export class HoursUserTableComponent implements OnInit {
   ngOnInit(): void {
     this.registers$ = this.registersService.registers
 
-    const { id } = localStorage
-    this.http.getAll(`${RoutesEnum.HoursAPI}?user=${id}`).subscribe({
-      next: (resp: any) => {
+    this.route.queryParams.subscribe(params => {
+      const { id } = localStorage
+      this.http.getAll(`${RoutesEnum.HoursAPI}?user=${id}`, params).subscribe(resp => {
         this.registersService.setRegisters(resp.data)
-      },
-      error: () => {
-        // implement a snackbar or something
-      }
+      })
     })
   }
 
