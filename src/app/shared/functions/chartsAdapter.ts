@@ -22,7 +22,6 @@ export function registerToChartByProject(registers: Register[]) {
         .filter(reg => extractDay(reg.init_date).includes(date))
         .reduce((prev, curr) => prev + curr.hours, 0)
     })
-    // .map(item => item !== 0 ? item : null)
   })
 
   const datasets = data.map((item, i) => {

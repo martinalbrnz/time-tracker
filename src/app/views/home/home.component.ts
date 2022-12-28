@@ -2,9 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RegistersService } from '@services/registers/registers.service';
 import { PieChartComponent } from '@shared/components/charts/pie-chart/pie-chart.component';
+import { PeriodSelectorComponent } from '@shared/components/period-selector/period-selector.component';
 import { Register } from '@shared/models/Register.model';
 import { Observable, scan, switchMap } from 'rxjs';
-
 
 @Component({
   selector: 'app-home',
@@ -12,6 +12,7 @@ import { Observable, scan, switchMap } from 'rxjs';
   imports: [
     CommonModule,
     PieChartComponent,
+    PeriodSelectorComponent,
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']

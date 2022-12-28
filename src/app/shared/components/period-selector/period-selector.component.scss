@@ -1,0 +1,82 @@
+.componentContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 200px;
+  border-radius: 4px;
+  box-shadow: var(--shadow);
+  background-color: var(--background-1);
+
+  .optionsContainer {
+    background-color: var(--background-2);
+    width: 100%;
+    display: flex;
+    border-radius: 4px 4px 0 0;
+
+    > *:last-child {
+      border-radius: 0 4px 0 0;
+    }
+    > *:first-child {
+      border-radius: 4px 0 0 0;
+    }
+
+    div {
+      cursor: pointer;
+      color: #888;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-grow: 1;
+      user-select: none;
+      padding: 4px 0;
+      transition: 0.1s;
+
+      &:hover {
+        color: var(--primary-light);
+      }
+
+      &.selectedPeriod {
+        color: var(--primary);
+        border-radius: 4px 4px 0 0;
+        background-color: var(--background-1);
+        font-weight: 600;
+      }
+    }
+  }
+
+  .selectorContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 8px;
+
+    mat-icon {
+      cursor: pointer;
+      border-radius: 12px;
+      transition: 0.1s;
+
+      &:hover {
+        color: var(--primary-light);
+        transform: scale(1.05);
+      }
+
+      &:active {
+        transform: scale(0.95);
+      }
+    }
+
+    .dateContainer {
+      display: flex;
+      justify-content: center;
+      transition: 0.2s;
+
+      span {
+        font-weight: 500;
+        user-select: none;
+        line-height: 24px;
+        padding: 0;
+        margin: 0;
+      }
+    }
+  }
+}

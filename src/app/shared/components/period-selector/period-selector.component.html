@@ -1,0 +1,17 @@
+<div class="componentContainer">
+  <div class="optionsContainer">
+    <div *ngFor="let item of periods" (click)="changePeriod(item.name)"
+      [ngClass]="{'selectedPeriod': item.name === period}">
+      {{ item.name | titlecase }}
+    </div>
+  </div>
+  <div class="selectorContainer">
+    <mat-icon matRipple (click)="changeDate('sub')">chevron_left</mat-icon>
+    <div class="dateContainer">
+      <span>{{ init_date | date: 'dd/MM/yy' }}</span>
+      <span *ngIf="period !== TimePeriodsEnum.Day">{{' - '}}{{ end_date | date: 'dd/MM/yy'
+        }}</span>
+    </div>
+    <mat-icon matRipple (click)="changeDate('add')">chevron_right</mat-icon>
+  </div>
+</div>
