@@ -26,7 +26,6 @@ export class ClockComponent implements OnInit {
       this.seconds = Math.floor((this.time / 1000))
       this.minutes = Math.floor((this.time / 60000)) - new Date(Date.now()).getTimezoneOffset()
       this.hours = Math.floor((this.time / 3600000)) - (new Date(Date.now()).getTimezoneOffset() / 60)
-      console.log(Math.floor(this.minutes / 2 + 180) % 360);
     })
   }
 
