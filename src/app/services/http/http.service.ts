@@ -27,9 +27,9 @@ export class HttpService {
       )
   }
 
-  getAll<T>(route: string) {
+  getAll<T>(route: string, params?: any) {
     return this.http
-      .get(`${environment.NG_API}/${route}`)
+      .get(`${environment.NG_API}/${route}`, { params })
       .pipe(
         map((res: any) => res),
         catchError(err => of(err))

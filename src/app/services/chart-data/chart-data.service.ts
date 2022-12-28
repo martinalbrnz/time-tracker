@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { RoutesEnum } from '@constants/routes';
+import { ActivatedRoute } from '@angular/router';
 import { HttpService } from '@services/http/http.service';
-import { registerToChartByProject } from '@shared/functions/chartsAdapter';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -11,15 +10,18 @@ export class ChartDataService {
 
   constructor(
     private http: HttpService,
+    private route: ActivatedRoute,
   ) {
-    const { id } = localStorage;
-    this.http
-      .getAll(`${RoutesEnum.HoursAPI}?user=${id}`).subscribe((res: any) => {
-        const data = res.data.reverse()
-        const { labels, datasets } = registerToChartByProject(res.data);
-        this.setLabels(labels)
-        this.setDatasets(datasets)
-      })
+    // this.route.queryParams.subscribe(params => {
+    //   const { id } = localStorage;
+    //   this.http
+    //     .getAll(`${RoutesEnum.HoursAPI}?user=${id}`).subscribe((res: any) => {
+    //       res.data.reverse()
+    //       const { labels, datasets } = registerToChartByProject(res.data);
+    //       this.setLabels(labels)
+    //       this.setDatasets(datasets)
+    //     })
+    // })
   }
 
   labels$ = new BehaviorSubject<string[]>([])

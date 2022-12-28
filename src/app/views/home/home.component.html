@@ -1,14 +1,12 @@
 <section class="sectionContainer">
 	<h2>Bienvenido {{ username | titlecase }}!</h2>
-
+	<app-period-selector></app-period-selector>
 	<div class="chart">
 		<div class="chartText">
 			<h3 class="cardTitle">Horas totales</h3>
-			<span>{{ hours$ | async }}</span>
+			<span>{{ hours }}</span>
 		</div>
-
 		<app-pie-chart></app-pie-chart>
 	</div>
-	<app-period-selector></app-period-selector>
 
 </section>

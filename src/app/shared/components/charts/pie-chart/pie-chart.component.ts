@@ -52,16 +52,7 @@ export class PieChartComponent implements OnInit {
   public pieChartPlugins = [DatalabelsPlugin];
 
   ngOnInit() {
-    // this.labels$ = this.chartService.labels
     this.datasets$ = this.chartService.datasets
-
-    // this.labels$.subscribe(labels => {
-    //   this.labels = labels
-    //   this.pieChartData = {
-    //     labels: this.labels,
-    //     datasets: this.datasets,
-    //   }
-    // })
 
     this.datasets$.subscribe(datasets => {
       this.datasets = formatHoursByProject(datasets)
