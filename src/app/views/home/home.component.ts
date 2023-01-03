@@ -6,6 +6,8 @@ import { ChartDataService } from '@services/chart-data/chart-data.service';
 import { HttpService } from '@services/http/http.service';
 import { RegistersService } from '@services/registers/registers.service';
 import { PieChartComponent } from '@shared/components/charts/pie-chart/pie-chart.component';
+import { HoursFormComponent } from '@shared/components/hours-form/hours-form.component';
+import { HoursUserTableComponent } from '@shared/components/hours-user-table/hours-user-table.component';
 import { PeriodSelectorComponent } from '@shared/components/period-selector/period-selector.component';
 import { registerToChartByProject } from '@shared/functions/chartsAdapter';
 
@@ -16,6 +18,8 @@ import { registerToChartByProject } from '@shared/functions/chartsAdapter';
     CommonModule,
     PieChartComponent,
     PeriodSelectorComponent,
+    HoursFormComponent,
+    HoursUserTableComponent,
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']

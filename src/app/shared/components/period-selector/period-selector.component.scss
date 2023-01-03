@@ -2,10 +2,10 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-  width: 200px;
+  width: 300px;
   border-radius: 4px;
   box-shadow: var(--shadow);
-  background-color: var(--background-1);
+  background-color: var(--background);
 
   .optionsContainer {
     background-color: var(--background-2);
@@ -38,7 +38,7 @@
       &.selectedPeriod {
         color: var(--primary);
         border-radius: 4px 4px 0 0;
-        background-color: var(--background-1);
+        background-color: var(--background);
         font-weight: 600;
       }
     }
@@ -71,7 +71,7 @@
       transition: 0.2s;
 
       span {
-        font-weight: 500;
+        font-weight: 600;
         user-select: none;
         line-height: 24px;
         padding: 0;

@@ -1,20 +1,31 @@
 .sectionContainer {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
+  background-color: var(--background-2);
+  min-height: calc(100vh - var(--header-height));
   gap: 12px;
-  padding: 20px;
+  padding: 12px;
+
+  .leftSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
 
   .chart {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 4px;
-    padding: 20px 40px;
-    border-radius: 4px;
-    background-color: var(--background-1);
+    gap: 12px;
+    padding: 12px;
+    border-radius: 2px;
+    background-color: var(--background);
+    box-shadow: var(--shadow-1);
     min-width: 300px;
+    height: 436px;
     width: max-content;
     max-width: 500px;
 
@@ -33,4 +44,12 @@
 
 .cardTitle {
   font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .sectionContainer {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 }

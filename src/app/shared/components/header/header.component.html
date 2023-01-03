@@ -5,9 +5,9 @@
     <h1 class="navAppName">TimeTracker</h1>
   </a>
   <ul class="navBar">
-    <li class="navLink" [routerLink]="routesEnum.Hours"><a class="linkText">{{ routesEnum.Hours | uppercase }}</a>
+    <!-- <li class="navLink" [routerLink]="routesEnum.Hours"><a class="linkText">{{ routesEnum.Hours | uppercase }}</a>
       <mat-icon class="expandIcon">expand_more</mat-icon>
-    </li>
+    </li> -->
     <li *ngIf="role === 'admin'" class="navLink" [routerLink]="routesEnum.Projects"><a class="linkText">{{
         routesEnum.Projects | uppercase }}</a>
     </li>

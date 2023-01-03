@@ -9,12 +9,14 @@
     <mat-icon matRipple (click)="changeDate('sub')">chevron_left</mat-icon>
     <div class="dateContainer">
       <div [ngSwitch]="period">
-        <div *ngSwitchCase="TimePeriodsEnum.Day">{{ init_date | date: 'EEE dd MMM yyyy' | titlecase }}</div>
-        <div *ngSwitchCase="TimePeriodsEnum.Week">{{ init_date | date: 'dd/MM/yy' | titlecase }} - {{ end_date |
+        <div *ngSwitchCase="TimePeriodsEnum.Day"><span>{{ init_date | date: 'EEE dd MMM yyyy' | titlecase }}</span>
+        </div>
+        <div *ngSwitchCase="TimePeriodsEnum.Week"><span>{{ init_date | date: 'dd/MM/yy' | titlecase }} - {{
+            end_</span>date |
           date:
           'dd/MM/yy' | titlecase }}
         </div>
-        <div *ngSwitchCase="TimePeriodsEnum.Month">{{ init_date | date: 'MMMM yyyy' | titlecase }}</div>
+        <div *ngSwitchCase="TimePeriodsEnum.Month"><span>{{ init_date | date: 'MMMM yyyy' | titlecase }}</span></div>
         <div *ngSwitchDefault>output2</div>
       </div>
     </div>

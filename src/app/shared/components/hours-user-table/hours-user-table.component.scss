@@ -1,15 +1,10 @@
 .tableContainer {
   width: 100%;
+  height: 436px;
   padding: 12px;
-  margin: 12px;
   border-radius: 2px;
-  box-shadow: var(--shadow-2);
-  background-color: var(--background-1);
-
-  .tableTitle {
-    padding: 0;
-    margin-bottom: 4px;
-  }
+  box-shadow: var(--shadow-1);
+  background-color: var(--background);
 
   .tableHeader {
     padding: 4px;
@@ -20,6 +15,8 @@
   }
 
   .tableBody {
+    height: 384px;
+    overflow-y: scroll;
     color: var(--tile-text);
     background-color: var(--tile);
 
@@ -39,6 +36,14 @@
       &:hover {
         background-color: var(--tile-hover);
       }
+    }
+
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--primary);
     }
   }
 
@@ -85,4 +90,12 @@
   :nth-child(5) {
     grid-area: 1/5/6/6;
   }
+}
+
+.noRegs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
