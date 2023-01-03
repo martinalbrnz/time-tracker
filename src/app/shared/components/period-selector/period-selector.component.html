@@ -8,9 +8,15 @@
   <div class="selectorContainer">
     <mat-icon matRipple (click)="changeDate('sub')">chevron_left</mat-icon>
     <div class="dateContainer">
-      <span>{{ init_date | date: 'dd/MM/yy' }}</span>
-      <span *ngIf="period !== TimePeriodsEnum.Day">{{' - '}}{{ end_date | date: 'dd/MM/yy'
-        }}</span>
+      <div [ngSwitch]="period">
+        <div *ngSwitchCase="TimePeriodsEnum.Day">{{ init_date | date: 'EEE dd MMM yyyy' | titlecase }}</div>
+        <div *ngSwitchCase="TimePeriodsEnum.Week">{{ init_date | date: 'dd/MM/yy' | titlecase }} - {{ end_date |
+          date:
+          'dd/MM/yy' | titlecase }}
+        </div>
+        <div *ngSwitchCase="TimePeriodsEnum.Month">{{ init_date | date: 'MMMM yyyy' | titlecase }}</div>
+        <div *ngSwitchDefault>output2</div>
+      </div>
     </div>
     <mat-icon matRipple (click)="changeDate('add')">chevron_right</mat-icon>
   </div>

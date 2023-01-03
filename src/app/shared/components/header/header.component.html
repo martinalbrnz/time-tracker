@@ -8,10 +8,11 @@
     <li class="navLink" [routerLink]="routesEnum.Hours"><a class="linkText">{{ routesEnum.Hours | uppercase }}</a>
       <mat-icon class="expandIcon">expand_more</mat-icon>
     </li>
-    <!-- <li class="navLink" [routerLink]="routesEnum.Projects"><a class="linkText">{{ routesEnum.Projects | uppercase }}</a>
-    </li> -->
-    <li class="navLink" [routerLink]="routesEnum.Charts"><a class="linkText">{{ routesEnum.Charts | uppercase }}</a>
+    <li *ngIf="role === 'admin'" class="navLink" [routerLink]="routesEnum.Projects"><a class="linkText">{{
+        routesEnum.Projects | uppercase }}</a>
     </li>
+    <!-- <li class="navLink" [routerLink]="routesEnum.Charts"><a class="linkText">{{ routesEnum.Charts | uppercase }}</a>
+    </li> -->
     <li class="navLink" (click)="logout()"><a class="linkText">{{ 'logout' | uppercase }}</a></li>
   </ul>
 </header>

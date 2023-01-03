@@ -28,6 +28,7 @@ export class HeaderComponent {
   ) { }
 
   routesEnum = RoutesEnum
+  role = localStorage.getItem('role');
 
   logout() {
     this.login.logout();
