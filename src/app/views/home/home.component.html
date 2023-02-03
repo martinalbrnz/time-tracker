@@ -4,17 +4,15 @@
 		<app-hours-form></app-hours-form>
 	</div>
 
-	<app-hours-user-table *ngIf="hours"></app-hours-user-table>
+	<app-hours-user-table></app-hours-user-table>
 
-	<div *ngIf="hours" class="chart">
-		<div>
-			<div class="chartText">
-				<h3 class="cardTitle">Horas totales</h3>
-				<span>{{ hours }}</span>
-			</div>
-			<app-pie-chart></app-pie-chart>
+	<!-- <div class="chart">
+		<div *ngIf="hours; else noRegs" class="chartText">
+			<h3 class="cardTitle">Horas totales</h3>
+			<span>{{ hours }}</span>
 		</div>
-	</div>
+		<app-pie-chart></app-pie-chart>
+	</div> -->
 </section>
 
 <ng-template #noRegs>

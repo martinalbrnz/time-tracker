@@ -1,101 +1,45 @@
 .tableContainer {
-  width: 100%;
-  height: 436px;
-  padding: 12px;
+  background-color: white;
   border-radius: 2px;
-  box-shadow: var(--shadow-1);
-  background-color: var(--background);
+  width: 388px;
+  box-shadow: var(--shadow);
 
-  .tableHeader {
-    padding: 4px;
-    border-radius: 2px 2px 0 0;
-    font-weight: 500;
-    color: var(--text-primary);
-    background-color: var(--primary-dark);
+  h2 {
+    padding: 4px 8px 0;
   }
 
-  .tableBody {
-    height: 384px;
+  .cardsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px;
+    max-height: 400px;
     overflow-y: scroll;
-    color: var(--tile-text);
-    background-color: var(--tile);
-
-    > *:not(:last-child) {
-      border-bottom: 1px solid #0003;
-    }
 
     .tableItem {
-      padding: 4px;
-      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 8px;
+      border-radius: 2px;
+      background-color: white;
+      box-shadow: var(--shadow);
 
-      > * {
-        display: flex;
-        align-items: center;
+      > *:not(:last-child) {
+        width: 100px;
       }
 
-      &:hover {
-        background-color: var(--tile-hover);
-      }
-    }
-
-    &::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background-color: var(--primary);
-    }
-  }
-
-  .tableFooter {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 2px;
-    border-radius: 0 0 2px 2px;
-    font-weight: 500;
-    color: var(--text-primary);
-    background-color: var(--primary-light);
-
-    .navIcon {
-      border-radius: 50%;
-      transition: 0.2s;
-
-      &:hover {
-        background-color: var(--primary);
+      .navIcon:hover {
+        cursor: pointer;
       }
     }
   }
 }
 
-.gridFormatter {
-  display: grid;
-  grid-template-columns: 100px 1fr 80px 80px 24px;
-  grid-template-rows: 1fr;
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-
-  :nth-child(1) {
-    grid-area: 1/1/6/2;
-  }
-  :nth-child(2) {
-    grid-area: 1/2/6/3;
-  }
-  :nth-child(3) {
-    grid-area: 1/3/6/4;
-  }
-  :nth-child(4) {
-    grid-area: 1/4/6/5;
-  }
-  :nth-child(5) {
-    grid-area: 1/5/6/6;
-  }
+.cardsContainer::-webkit-scrollbar {
+  width: 8px;
 }
 
-.noRegs {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
+.cardsContainer::-webkit-scrollbar-thumb {
+  background-color: #3336;
 }

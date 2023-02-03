@@ -1,17 +1,10 @@
-<div class="tableContainer">
-	<div class="tableHeader gridFormatter">
-		<div>Fecha</div>
-		<div>Proyecto</div>
-		<div>Hora inicio</div>
-		<div>Hora final</div>
-		<div></div>
-	</div>
-	<div class="tableBody">
-		<div *ngFor="let reg of registers$ | async" class="tableItem gridFormatter">
+<div *ngIf="registers$ | async as registers" class="tableContainer">
+	<h2>{{ registers.length > 0 ? 'Registros' : 'No hay registros'}}</h2>
+	<div class="cardsContainer">
+		<div *ngFor="let reg of registers$ | async" class="tableItem">
 			<div>{{ reg.init_date | date: 'dd/MM/yyyy' }}</div>
 			<div>{{ reg.project.title }}</div>
-			<div>{{ reg.init_date | date: 'HH:mm' }}</div>
-			<div>{{ reg.end_date | date: 'HH:mm' }}</div>
+			<div>{{ reg.init_date | date: 'HH:mm' }} a {{ reg.end_date | date: 'HH:mm' }}</div>
 			<div><mat-icon class="navIcon" (click)="handleEdit(reg)">edit</mat-icon></div>
 		</div>
 	</div>
