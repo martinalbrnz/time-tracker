@@ -1,4 +1,7 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { HoursComponent } from './hours.component';
 
@@ -8,9 +11,14 @@ describe('HoursComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ HoursComponent ]
+      imports: [
+        HoursComponent,
+        HttpClientModule,
+        RouterTestingModule,
+        BrowserAnimationsModule,
+      ]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(HoursComponent);
     component = fixture.componentInstance;

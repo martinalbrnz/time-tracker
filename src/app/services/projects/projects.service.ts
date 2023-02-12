@@ -9,8 +9,6 @@ export class ProjectsService {
 
   private projects$ = new BehaviorSubject<Project[]>([])
 
-  constructor() { }
-
   get projects(): Observable<Project[]> {
     return this.projects$.asObservable()
   }

@@ -1,4 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { HoursUserTableComponent } from './hours-user-table.component';
 
@@ -8,9 +10,14 @@ describe('HoursUserTableComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HoursUserTableComponent ]
+      imports: [
+        HoursUserTableComponent,
+        HttpClientModule,
+        RouterTestingModule,
+      ],
+
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(HoursUserTableComponent);
     component = fixture.componentInstance;
